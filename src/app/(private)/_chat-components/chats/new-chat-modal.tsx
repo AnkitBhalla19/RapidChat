@@ -90,7 +90,9 @@ function NewChatModal({
             {!loading && users.length>0 &&(
             <div className='flex flex-col gap-5'>
             {users.map((user)=>{
-              const chatAlreadyExists = chats?.find((chat)=>chat.users.find((u)=>u._id===user._id));
+              const chatAlreadyExists = chats?.find((chat)=>chat.users.find((u)=>u._id===user._id)
+              && !chat.isGroupChat
+            );
               if(user._id===currentUserData?._id || chatAlreadyExists){
                 return null;
               }
