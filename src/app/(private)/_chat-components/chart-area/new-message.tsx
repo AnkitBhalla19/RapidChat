@@ -57,7 +57,7 @@ function NewMessage() {
         chat: selectedChat?._id!,
         sender: currentUserData?._id!,
       }
-      sendMessage(dbPayload);
+      await sendMessage(dbPayload);
     } catch (error: any) {
       message.error(error.message)
 
