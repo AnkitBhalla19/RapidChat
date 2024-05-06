@@ -8,14 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getChatMessages, ReadAllMessages } from "@/server-actions/message";
 import { MessageType } from "@/interfaces";
 import socket from "@/config/socket-config";
+import { UserState } from "@/redux/userSlice";
 
 
-export default async function Home() {
+export default function Home() {
 
   const [showChatArea, setShowChatArea] = useState(false);
   const { selectedChat,chats }: ChatState = useSelector((state: any) => state.chat);
-  const {currentUserData} = useSelector((state: any) => state.user);
+  const {currentUserData}:UserState = useSelector((state: any) => state.user);
   const [messages, setMessages] = useState<MessageType[]>([]);
+  const[loading,setLoading]=useState<boolean>(false);
   const chatAreaRef = React.useRef<HTMLDivElement>(null);
   const dispatch = useDispatch(); 
 
@@ -35,6 +37,7 @@ export default async function Home() {
 
   const getMessages = async () => {
     try {
+      setLoading(true);
       const response  = await getChatMessages(selectedChat?._id!);
 
       if (response.error) {
@@ -43,6 +46,9 @@ export default async function Home() {
       setMessages(response);
     } catch (error: any) {
       message.error(error.message);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -53,7 +59,7 @@ export default async function Home() {
 
 
   useEffect(() => {
-    socket.on("new-message-received", (message: MessageType) => {
+    socket.on("received-new-message", (message: MessageType) => {
       if(selectedChat?._id === message.chat._id){
         setMessages((prev) => {
           const isMessageAlreadyExists: any = prev.find((msg) => msg.socketMessageId === message.socketMessageId);
@@ -101,7 +107,7 @@ export default async function Home() {
 
       socket.emit("read-all-messages", {
         chatId: selectedChat?._id!, 
-        userId: currentUserData?._id!,
+        readByUserId: currentUserData?._id!,
         users: selectedChat?.users.filter((user) => user._id !== currentUserData?._id!).map((user) => user._id),
       });
 
