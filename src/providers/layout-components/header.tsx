@@ -56,9 +56,9 @@ function Header() {
         currentUserData &&
         <div className='bg-primary w-full p-3 flex justify-between items-center border-b border-solid border-gray-300' id='header'>
             <div>
-                <Avatar src='/ankitLogo.svg' alt='logo' className='cursor-pointer w-[270px] h-7' onClick={()=>router.push('/')}/>
+                <Avatar src='/ankitLogo.svg' alt='logo' className='cursor-pointer h-8 w-48 md:w-64' onClick={()=>router.push('/')}/>
             </div>
-            <div className='text-white gap-5 flex items-center'>
+            <div className='text-white gap-3 flex items-center'>
                 <span className='text-white text-sm uppercase font-semibold'>{currentUserData?.userName}</span>
                 <Avatar className='cursor-pointer' onClick={() => setshowCurrentUserInfo(true)} size='large'
                     src={currentUserData?.profilePicture} />
