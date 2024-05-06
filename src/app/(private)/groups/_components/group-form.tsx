@@ -65,11 +65,12 @@ function GroupForm(
 
 
   return (
-    <div className='grid grid-cols-2'>
-        <div className="flex flex-col gap-5">
+    <div className='flex flex-col md:flex-row md:gap-40'>
+        <div className="md:w-1/2 mb-5 md:mb-0">
         <span className="text-gray-500 text-xs">
           Select users to add to group
         </span>
+        <div className="mt-2 flex flex-col gap-3 md:gap-4 max-h-96 overflow-y-auto custom-scrollbar">
             {users.map((user)=>{
                 if(user._id===currentUserData?._id){
                     return null;
@@ -90,8 +91,9 @@ function GroupForm(
                     <div>{user.name}</div>
                 </div>
             )})}
+          </div>
         </div>
-        <div>
+        <div className="md:w-1/2">
         <Form layout="vertical" onFinish={onFinish} initialValues={initialData}>
           <Form.Item
             name="groupName"

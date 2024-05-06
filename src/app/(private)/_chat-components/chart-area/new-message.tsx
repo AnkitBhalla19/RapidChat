@@ -79,7 +79,7 @@ function NewMessage() {
 
 
   return (
-    <div className='p-3 bg-gray-100 border-0 border-t border-gray-300 border-solid flex gap-5 relative'>
+    <div className='p-3 bg-gray-100 border-0 border-t border-gray-300 border-solid flex gap-5 relative' id='newMessage'>
       <div className='flex gap-5'>
         <Button
           className="border-gray-300"

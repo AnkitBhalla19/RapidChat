@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -103,4 +103,29 @@ textarea{
 }
 .ant-modal-close-x{
   color: #31304D !important;
+}
+
+@media screen and (max-width: 768px){
+  #header{
+    position: fixed;
+    z-index: 100;
+  }
+
+  #recipient{
+    position: fixed;
+    z-index: 100;
+    top: 65px;
+    width: 100%;
+  }
+
+  #home{
+    margin-top: 65px;
+  }
+
+  #newMessage{
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    width: 100%;
+  }
 }

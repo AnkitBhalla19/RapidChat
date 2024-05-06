@@ -58,7 +58,7 @@ function Recipient() {
 
 
     return (
-        <div className='flex justify-between border-0 border-b border-yellow-500 py-3 px-5 border-solid bg-gray-100'>
+        <div className='flex justify-between border-0 border-b border-yellow-500 py-3 px-5 border-solid bg-gray-100' id='recipient'>
             <div className='flex items-center gap-3'>
             <img src='/back.svg' className='cursor-pointer w-[25px] h-[25px]' onClick={()=>{dispatch(setSelectedChat(null))}}></img> 
             <div className='flex flex-row items-center gap-2 cursor-pointer' onClick={()=>setShowRecipientInfo(true)}>

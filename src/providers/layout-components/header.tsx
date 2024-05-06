@@ -54,7 +54,7 @@ function Header() {
 
     return (
         currentUserData &&
-        <div className='bg-primary w-full p-3 flex justify-between items-center border-b border-solid border-gray-300'>
+        <div className='bg-primary w-full p-3 flex justify-between items-center border-b border-solid border-gray-300' id='header'>
             <div>
                 <Avatar src='/ankitLogo.svg' alt='logo' className='cursor-pointer w-[270px] h-7' onClick={()=>router.push('/')}/>
             </div>
