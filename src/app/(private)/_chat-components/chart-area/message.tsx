@@ -29,6 +29,9 @@ function Message(
                 {message.text &&<p className='bg-primary text-white px-7 py-2 rounded-xl rounded-tl-none m-0'>
                     {message.text}
                 </p>}
+                {message.gifUrl && (
+                        <img src={message.gifUrl} className='h-40 w-50 rounded-lg rounded-tr-none z-0' alt='message-gif' />
+                    )}
                 {message.image && <img src={message.image} alt='message' className='w-60 h-60 rounded-xl rounded-tl-none'></img>}
                 <div className="flex justify-between">
 
@@ -59,6 +62,9 @@ function Message(
                 {message.text && <p className= 'bg-yellow-500/50 text-black rounded-xl rounded-tr-none m-0 px-7 py-2 text-sm font-medium'>
                     {message.text}
                 </p> }
+                {message.gifUrl && (
+                        <img src={message.gifUrl} className='h-40 w-50 rounded-lg rounded-tr-none z-0' alt='message-gif' />
+                    )}
                 {message.image && <img src={message.image} alt='message' className='w-60 h-60 rounded-xl rounded-tr-none'></img>}
                 <span className='text-xs text-gray-500'>
                 {dateFormat(message.createdAt)}
